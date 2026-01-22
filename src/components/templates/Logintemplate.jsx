@@ -1,9 +1,10 @@
 import styled from "styled-components"
-import {Btnsave, InputText2, Title, Linea} from "../../index";
+import {Btnsave, InputText2, Title, Linea, Footer, useAuthStore} from "../../index";
 import { v } from "../../styles/variables";
 import { Device } from "../../styles/breakpoints"
 
 export function LoginTemplate() {
+    const { loginGoogle } = useAuthStore();
     return(<Container>
         
             <div className="card">
@@ -26,8 +27,9 @@ export function LoginTemplate() {
                 <Linea>
                     <span>O</span>
                 </Linea>
-                <Btnsave titulo="Google" bgcolor="#fff" icono={ <v.iconogoogle /> } color="#1CB0F6" width="100%"></Btnsave>
+                <Btnsave funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={ <v.iconogoogle /> } color="#1CB0F6" width="100%"></Btnsave>
             </div>
+            <Footer />
         
     </Container>)
 }
@@ -37,6 +39,8 @@ const Container = styled.main`
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
+    margin: 10px;
     .card{
         display: flex;
         flex-direction: column;
